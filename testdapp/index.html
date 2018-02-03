@@ -1,0 +1,43 @@
+<html>
+	<head>
+		<title>BuzzToken Info</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="abi.js"></script>
+		<script>
+			$(document).ready(() => {
+				$('#address').text(web3.eth.accounts[0]);
+				web3.eth.getBalance(web3.eth.accounts[0],
+				(err, result) => {
+					console.log(result);
+					$('#balance').text(result);
+				});
+				$('#version').text(web3.version.api);
+
+				$('#update').click(() => {
+					c = web3.eth.contract(abi).at($('#token').val());
+					c.balanceOf(web3.eth.accounts[0], (err, result) => {
+						console.log(result);
+						$('#amount').text(result);
+						c.name((err, result) => {
+							console.log(result);
+							$('#name').text(result);
+						});
+					});
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<h1>BuzzToken Info</h1>
+		Your Address: <span id="address"></span><br>
+		Your Balance: <span id="balance"></span><br>
+		Web3 Version: <span id="version"></span><br>
+		<br>
+		Token Address:
+		<input type="text" id="token" placeholder="0x..."/><br>
+		<input type="button" value="Update" id="update"/></br>
+		<br>
+		Token Name: <span id="name"></span><br>
+		Your Balance: <span id="amount"/></span><br>
+	</body>
+</html>
