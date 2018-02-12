@@ -1,5 +1,5 @@
 # blockchainpresentation
-Presentation files for the 2018 Regional IISE Conference
+Source code to accompany the Exploring Blockchain Applications presentation
 
 ## Contract Address
-0xF7fA0E28630C2f6ba3575ce86DA0D5618a9807c8
+TBD
